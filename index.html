@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Bill Splitter</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <main class="card">
+            <h1>Bill Splitter</h1>
+            <p class="hint">Quick start</p>
+            <div class="presets">
+                <button class="chip" data-preset="restaurant">
+                    🍽️ Restaurant
+                </button>
+                <button class="chip" data-preset="bolt">🚗 Shared Bolt</button>
+                <button class="chip" data-preset="light">
+                    💡 Compound light
+                </button>
+            </div>
+            <p id="presetNote" class="note hidden"></p>
+
+            <label for="mode">How do you want to split?</label>
+            <select id="mode">
+                <option value="equal">Equally</option>
+                <option value="order">By what each person ordered</option>
+            </select>
+
+            <!-- Shown in "Equally" mode -->
+            <div id="equalBox">
+                <label for="total">Total bill (₦)</label>
+                <input
+                    id="total"
+                    type="number"
+                    inputmode="decimal"
+                    placeholder="e.g. 25000"
+                />
+
+                <label for="people">Number of people</label>
+                <input
+                    id="people"
+                    type="number"
+                    inputmode="numeric"
+                    placeholder="e.g. 4"
+                />
+            </div>
+
+            <!-- Shown in "By order" mode -->
+            <div id="orderBox" class="hidden">
+                <label>Who ordered what (₦)</label>
+                <div id="orderList"></div>
+                <button id="addPersonBtn" class="secondary">
+                    + Add person
+                </button>
+
+                <label for="shareMode">Share service, VAT and delivery</label>
+                <select id="shareMode">
+                    <option value="order">By order amount</option>
+                    <option value="equal">Equally</option>
+                </select>
+
+                <label for="payer">Who paid the bill?</label>
+                <select id="payer">
+                    <option value="">Not selected</option>
+                </select>
+            </div>
+
+            <label for="service">Service charge (%)</label>
+            <input
+                id="service"
+                type="number"
+                inputmode="decimal"
+                placeholder="e.g. 10"
+            />
+
+            <label for="vat">VAT (%)</label>
+            <input
+                id="vat"
+                type="number"
+                inputmode="decimal"
+                placeholder="e.g. 7.5"
+            />
+
+            <label for="delivery">Delivery or other extra fee (₦)</label>
+            <input
+                id="delivery"
+                type="number"
+                inputmode="decimal"
+                placeholder="e.g. 1500"
+            />
+
+            <button id="calcBtn">Calculate</button>
+            <button id="resetBtn" class="secondary">Reset</button>
+
+            <div id="result"></div>
+            <div id="shareButtons" class="hidden">
+                <button id="copyBtn" class="secondary">Copy summary</button>
+                <button id="whatsappBtn">Share on WhatsApp</button>
+            </div>
+        </main>
+
+        <script src="script.js"></script>
+    </body>
+</html>
